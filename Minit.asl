@@ -7,6 +7,12 @@ state("minit")
 	int mapcode : "minit.exe", 0x617EA0;
 }
 
+startup
+{
+    settings.Add("split4tree", true, "Split after hiding tree resident?");
+    settings.Add("splitcog", true, "Split after hit the cog?");
+}
+
 init
 {
     Action resetVars = () =>
@@ -33,5 +39,17 @@ start
 
 split
 {
-    return (current.isItemload != old.isItemload && current.isItemload == 0 || current.mapcode == 2);
+	if (current.isItemload != old.isItemload && current.isItemload == 1 || current.mapcode == 2)
+	{
+		return true;
+	}
+	if (settings["split4tree"] && current.reset != old.reset && current.mapcode == 52)
+	{
+		return true;
+	}
+	if (settings["splitcog"] && current.reset != old.reset && current.mapcode == 117)
+	{
+		return true;
+	}
 }
+
