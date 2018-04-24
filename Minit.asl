@@ -10,9 +10,9 @@ state("minit")
 startup
 {
 	settings.Add("items", true, "Item Splits");
-	settings.Add("coins", true, "Coin Splits");
-	settings.Add("hearts", true, "Heart Splits");
-	settings.Add("misc", true, "Miscellaneous Splits");
+	settings.Add("coins", false, "Coin Splits");
+	settings.Add("hearts", false, "Heart Splits");
+	settings.Add("misc", false, "Miscellaneous Splits");
 
 	settings.CurrentDefaultParent = "items";
 	settings.Add("sword", true, "Sword");
@@ -42,8 +42,8 @@ startup
 
 
 	settings.CurrentDefaultParent = "misc";
-	settings.Add("4tree", true, "Split after hiding tree resident");
-	settings.Add("cog", true, "Split after hit the cog");
+	settings.Add("4tree", false, "Split after hiding tree resident");
+	settings.Add("cog", false, "Split after hit the cog");
 }
 
 
